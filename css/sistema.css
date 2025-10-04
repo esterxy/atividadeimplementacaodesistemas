@@ -1,0 +1,284 @@
+/* --- GERAL E VARIÁVEIS --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    /* Cores */
+    --c-primary: #4f46e5;
+    --c-primary-light: #e0e7ff;
+    --c-primary-dark: #3730a3;
+    --c-danger: #dc2626;
+    --c-danger-light: #fee2e2;
+    --c-success: #16a34a;
+    --c-text-primary: #111827;
+    --c-text-secondary: #6b7280;
+    --c-bg-body: #f3f4f6;
+    --c-bg-container: #ffffff;
+    --c-border: #e5e7eb;
+
+    /* Estilos */
+    --border-radius: 8px;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --transition: all 0.2s ease-in-out;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--c-bg-body);
+    color: var(--c-text-primary);
+    font-size: 14px;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
+input, select, textarea, button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.app {
+    display: flex;
+    height: 100vh;
+}
+
+header {
+    background-color: var(--c-bg-container);
+    color: var(--c-text-primary);
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+    border-bottom: 1px solid var(--c-border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+header .logo {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--c-primary);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+main {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    margin-top: 65px; /* Altura do header */
+    margin-left: 220px; /* Largura da navegação */
+}
+
+/* --- NAVEGAÇÃO LATERAL (NAV) --- */
+nav {
+    width: 220px;
+    background-color: var(--c-bg-container);
+    padding: 16px;
+    border-right: 1px solid var(--c-border);
+    position: fixed;
+    top: 65px; /* Altura do header */
+    bottom: 0;
+    left: 0;
+}
+
+nav button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    color: var(--c-text-secondary);
+    transition: var(--transition);
+}
+
+nav button:hover {
+    background-color: var(--c-bg-body);
+    color: var(--c-text-primary);
+}
+
+nav button.active {
+    background-color: var(--c-primary-light);
+    color: var(--c-primary);
+    font-weight: 600;
+}
+
+
+/* --- COMPONENTES --- */
+.card {
+    background: var(--c-bg-container);
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Botões */
+.btn {
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    border: none;
+    background: var(--c-primary);
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: var(--c-primary-dark);
+}
+
+.btn.ghost {
+    background: transparent;
+    color: var(--c-text-secondary);
+    border: 1px solid var(--c-border);
+}
+
+.btn.ghost:hover {
+    background-color: var(--c-bg-body);
+    color: var(--c-text-primary);
+}
+
+#btn-logout {
+    background: var(--c-danger-light);
+    color: var(--c-danger);
+    font-weight: 500;
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#btn-logout:hover {
+    background: var(--c-danger);
+    color: white;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+th, td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--c-border);
+    text-align: left;
+    vertical-align: middle;
+}
+
+thead th {
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--c-text-secondary);
+    text-transform: uppercase;
+    background-color: var(--c-bg-body);
+}
+
+tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+td .btn-edit, td .btn-del {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-right: 4px;
+    border: 1px solid transparent;
+}
+.btn-edit {
+    background-color: var(--c-primary-light);
+    color: var(--c-primary);
+}
+.btn-edit:hover { background-color: var(--c-primary); color: white; }
+
+.btn-del {
+    background-color: var(--c-danger-light);
+    color: var(--c-danger);
+}
+.btn-del:hover { background-color: var(--c-danger); color: white; }
+
+/* Formulários */
+.form-group {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--c-text-primary);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--c-border);
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    transition: var(--transition);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 2px var(--c-primary-light);
+}
+
+/* --- Seção Clientes Específica --- */
+#customers-wrap .card {
+    box-shadow: none;
+    border: 1px solid var(--c-border);
+    padding: 16px;
+}
+
+/* --- Estilos para grupos de formulário em linha --- */
+.form-group-inline {
+    display: flex;          /* Coloca os itens lado a lado */
+    align-items: stretch;   /* Faz com que todos tenham a mesma altura */
+    gap: 12px;              /* Cria um espaço consistente entre eles */
+    margin-bottom: 24px;    /* Adiciona um espaço abaixo do grupo */
+}
+
+.form-group-inline input[type="search"] {
+    flex: 1; /* Faz o campo de busca crescer e ocupar o espaço disponível */
+    border-radius: 5px; /* Por exemplo, 20px, você pode ajustar este valor */
+}
+
+.form-group-inline input[type="number"] {
+    width: 70px; /* Define uma largura fixa para o campo de quantidade */
+    text-align: center;
+}
