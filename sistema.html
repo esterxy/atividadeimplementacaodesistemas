@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Sistema - Loja de Acessórios Norte</title>
+  <style>
+    :root{--accent:#4f46e5;--muted:#666;--bg:#f6f7fb}
+    body{margin:0;font-family:sans-serif;background:var(--bg);}
+    header{background:var(--accent);color:white;padding:14px 20px;
+           display:flex;justify-content:space-between;align-items:center}
+    nav{width:200px;background:white;padding:14px;border-right:1px solid #ddd}
+    nav button{display:block;width:100%;padding:10px;border:0;background:none;
+               text-align:left;cursor:pointer;border-radius:6px}
+    nav button.active{background:#f3f0ff;color:var(--accent);font-weight:bold}
+    .app{display:flex;height:calc(100vh - 50px)}
+    main{flex:1;padding:18px;overflow:auto}
+    .card{background:white;padding:12px;margin-bottom:10px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+    input,select,textarea,button{font:inherit}
+    .btn{padding:6px 10px;border-radius:6px;border:0;background:var(--accent);color:white;cursor:pointer}
+    .btn.ghost{background:transparent;color:var(--accent);border:1px solid #ddd}
+  </style>
+</head>
+<body>
+  <header>
+    <div>📦 Loja de Acessórios Norte</div>
+    <div id="user-info"></div>
+    <button id="btn-logout">Sair</button>
+  </header>
+  <div class="app">
+    <nav id="menu">
+      <button id="nav-products">Produtos</button>
+      <button id="nav-pos">PDV</button>
+      <button id="nav-customers">Clientes</button>
+      <button id="nav-reports">Relatórios</button>
+      <button id="nav-finance">Financeiro</button>
+    </nav>
+    <main>
+      <!-- Produtos -->
+      <section id="section-products" class="card">
+        <h2>Produtos</h2>
+        <button id="btn-new-product" class="btn">+ Novo Produto</button>
+        <table id="product-table"><thead><tr><th>SKU</th><th>Nome</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr></thead><tbody></tbody></table>
+      </section>
+
+        <!-- PDV -->
+        <section id="section-pos" class="card" style="display:none">
+        <h2>PDV</h2>
+
+        <!-- Cliente -->
+        <label>Cliente:
+            <select id="pos-customer">
+            <option value="">-- Selecione um cliente --</option>
+            </select>
+        </label>
+        <br><br>
+
+        <!-- Buscar produto -->
+        <input id="pos-search" placeholder="Buscar produto por nome ou SKU"/>
+        <input id="pos-qty" type="number" min="1" value="1" style="width:60px"/>
+        <button id="btn-add-to-cart">Adicionar</button>
+
+        <table id="cart-table">
+            <thead>
+            <tr><th>Produto</th><th>Preço</th><th>Qtd</th><th>Total</th><th></th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div>Total: <span id="pos-total">R$ 0,00</span></div>
+
+        <label>Pagamento:
+            <select id="pos-payment">
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Cartao">Cartão</option>
+            <option value="PIX">PIX</option>
+            </select>
+        </label>
+
+        <button id="btn-complete-sale" class="btn">Finalizar Venda</button>
+        </section>
+
+      <!-- Clientes -->
+      <section id="section-customers" class="card" style="display:none">
+        <h2>Clientes</h2>
+        <button id="btn-new-customer" class="btn">+ Novo Cliente</button>
+        <div id="customers-wrap"></div>
+      </section>
+
+      <!-- Relatórios -->
+      <section id="section-reports" class="card" style="display:none">
+        <h2>Relatórios</h2>
+        <div>Total de vendas: <span id="report-total">R$ 0,00</span></div>
+        <div>Vendas realizadas: <span id="report-count">0</span></div>
+      </section>
+
+      <!-- Financeiro -->
+      <section id="section-finance" class="card" style="display:none">
+        <h2>Financeiro</h2>
+        <div id="finance-summary"></div>
+      </section>
+    </main>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>
